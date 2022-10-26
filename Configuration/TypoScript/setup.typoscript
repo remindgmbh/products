@@ -1,0 +1,44 @@
+plugin {
+    tx_products {
+        settings {
+            jsonFields {
+                Remind\Products\Domain\Model\Product = articleNumber,title,description
+            }
+        }
+    }
+}
+
+tt_content {
+    products_list =< lib.contentElementWithHeader
+    products_list {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Products
+                        pluginName = List
+                    }
+                }
+            }
+        }
+    }
+    products_detail =< lib.contentElementWithHeader
+    products_detail {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Products
+                        pluginName = Detail
+                    }
+                }
+            }
+        }
+    }
+}
