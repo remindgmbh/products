@@ -1,0 +1,29 @@
+mod.wizards.newContentElement.wizardItems {
+   products {
+      header = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:products
+      elements {
+         products_filterablelist {
+            iconIdentifier = productsfilterablelist
+            title = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:filterableList
+            tt_content_defValues {
+               CType = products_filterablelist
+            }
+         }
+         products_selectionlist {
+            iconIdentifier = productsselectionlist
+            title = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:selectionList
+            tt_content_defValues {
+               CType = products_selectionlist
+            }
+         }
+         products_detail {
+            iconIdentifier = productsdetail
+            title = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:detail
+            tt_content_defValues {
+               CType = products_detail
+            }
+         }
+      }
+      show := addToList(products_detail,products_filterablelist,products_selectionlist)
+   }
+}

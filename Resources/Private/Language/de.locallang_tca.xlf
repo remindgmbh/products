@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_products/Resources/Private/Language/de.locallang_tca.xlf" product-name="rmnd_products">
+        <header/>
+        <body>
+            <trans-unit id="articleNumber">
+                <target>Artikelnummer</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="detail">
+                <target>Produkte Detail Ansicht</target>
+            </trans-unit>
+            <trans-unit id="filterableList">
+                <target>Produkte Filterbare Liste</target>
+            </trans-unit>
+            <trans-unit id="name">
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="product">
+                <target>Produkt</target>
+            </trans-unit>
+            <trans-unit id="products">
+                <target>Produkte</target>
+            </trans-unit>
+            <trans-unit id="selectionList">
+                <target>Produkte Auswahl Liste</target>
+            </trans-unit>
+            <trans-unit id="slug">
+                <target>Slug</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

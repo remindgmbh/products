@@ -1,0 +1,60 @@
+plugin {
+    tx_products {
+        settings {
+            jsonFields {
+                Remind\Products\Domain\Model\Product = articleNumber,name,description
+            }
+        }
+    }
+}
+
+tt_content {
+    products_filterablelist =< lib.contentElementWithHeader
+    products_filterablelist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Products
+                        pluginName = FilterableList
+                    }
+                }
+            }
+        }
+    }
+    products_selectionlist =< lib.contentElementWithHeader
+    products_selectionlist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Products
+                        pluginName = SelectionList
+                    }
+                }
+            }
+        }
+    }
+    products_detail =< lib.contentElementWithHeader
+    products_detail {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Products
+                        pluginName = Detail
+                    }
+                }
+            }
+        }
+    }
+}
