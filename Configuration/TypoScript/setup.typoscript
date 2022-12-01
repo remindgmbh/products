@@ -9,8 +9,8 @@ plugin {
 }
 
 tt_content {
-    products_list =< lib.contentElementWithHeader
-    products_list {
+    products_filterablelist =< lib.contentElementWithHeader
+    products_filterablelist {
         fields {
             content {
                 fields {
@@ -19,7 +19,7 @@ tt_content {
                         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
                         vendorName = Remind
                         extensionName = Products
-                        pluginName = List
+                        pluginName = FilterableList
                     }
                 }
             }

@@ -17,7 +17,7 @@ defined('TYPO3') or die;
         'Products'
     );
 
-    PluginUtility::addTcaType('products_list', PluginType::FILTERABLE_LIST);
+    PluginUtility::addTcaType('products_filterablelist', PluginType::FILTERABLE_LIST);
 
     ExtensionUtility::registerPlugin(
         'Products',
