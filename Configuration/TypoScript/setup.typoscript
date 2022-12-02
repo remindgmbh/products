@@ -2,7 +2,7 @@ plugin {
     tx_products {
         settings {
             jsonFields {
-                Remind\Products\Domain\Model\Product = articleNumber,title,description
+                Remind\Products\Domain\Model\Product = articleNumber,name,description
             }
         }
     }

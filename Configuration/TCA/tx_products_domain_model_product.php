@@ -1,11 +1,12 @@
 <?php
+
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
-        'label' => 'title',
+        'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'versioningWS' => true,
@@ -32,8 +33,8 @@ return [
                 'max' => 256,
             ],
         ],
-        'title' => [
-            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:title',
+        'name' => [
+            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:name',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -57,7 +58,7 @@ return [
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
-                    'fields' => ['title'],
+                    'fields' => ['name'],
                     'prefixParentPageSlug' => false,
                     'replacements' => [
                         '/' => '-',
@@ -181,7 +182,7 @@ return [
             'showitem' => '
                 article_number,
                 --linebreak--,
-                title,
+                name,
                 --linebreak--,
                 slug,
                 --linebreak--,

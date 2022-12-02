@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Product extends AbstractJsonSerializableEntity
 {
     protected string $articleNumber = '';
-    protected string $title = '';
+    protected string $name = '';
     protected string $description = '';
     protected string $slug = '';
     /**
@@ -31,14 +31,14 @@ class Product extends AbstractJsonSerializableEntity
         return $this;
     }
 
-    public function getTitle(): string
+    public function getName(): string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
