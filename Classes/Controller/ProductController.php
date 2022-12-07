@@ -22,14 +22,13 @@ class ProductController extends ActionController
 
     public function filterableListAction(?int $page = 1, array $filter = []): ResponseInterface
     {
-        $listResult = $this->dataService->getFilterableList($this->productRepository, $page, $filter);
+        $listResult = $this->dataService->getFilterableList($this->productRepository, $page, $filter, 'filter');
 
         $jsonResult = $this->jsonService->serializeFilterableList(
             $listResult,
             $page,
             'detail',
             'product',
-            'filter'
         );
 
         return $this->jsonResponse(json_encode($jsonResult));
