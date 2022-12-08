@@ -18,7 +18,7 @@ class ExtensionUtility
         ExtensionManagementUtility::addTCAcolumns($table, [
             $fieldName => [
                 'exclude' => false,
-                'label' => 'Product (TODO)',
+                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
                 'config' => [
                     'type' => 'select',
                     'renderType' => 'selectSingle',
@@ -47,7 +47,7 @@ class ExtensionUtility
         $column = [
             $fieldName => [
                 'exclude' => false,
-                'label' => 'Products (TODO)',
+                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:products',
                 'config' => [
                     'type' => 'select',
                     'renderType' => 'selectMultipleSideBySide',
