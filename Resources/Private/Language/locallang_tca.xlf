@@ -24,6 +24,9 @@
             <trans-unit id="products">
                 <source>Products</source>
             </trans-unit>
+            <trans-unit id="selectionList">
+                <source>Products Selection List</source>
+            </trans-unit>
             <trans-unit id="slug">
                 <source>Slug</source>
             </trans-unit>

@@ -27,6 +27,14 @@ defined('TYPO3_MODE') || die('Access denied.');
 
     ExtensionUtility::configurePlugin(
         'Products',
+        'SelectionList',
+        [ProductController::class => 'selectionList'],
+        [],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    );
+
+    ExtensionUtility::configurePlugin(
+        'Products',
         'Detail',
         [ProductController::class => 'detail'],
         [],

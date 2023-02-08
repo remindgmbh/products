@@ -9,6 +9,13 @@ mod.wizards.newContentElement.wizardItems {
                CType = products_filterablelist
             }
          }
+         products_selectionlist {
+            iconIdentifier = productsselectionlist
+            title = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:selectionList
+            tt_content_defValues {
+               CType = products_selectionlist
+            }
+         }
          products_detail {
             iconIdentifier = productsdetail
             title = LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:detail
@@ -17,6 +24,6 @@ mod.wizards.newContentElement.wizardItems {
             }
          }
       }
-      show := addToList(products_detail,products_filterablelist)
+      show := addToList(products_detail,products_filterablelist,products_selectionlist)
    }
 }

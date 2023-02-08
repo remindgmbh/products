@@ -9,6 +9,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:rmnd_products/Resources/Public/Icons/products_filterable_list.svg',
     ],
+    'productsselectionlist' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:rmnd_products/Resources/Public/Icons/products_selection_list.svg',
+    ],
     'productsdetail' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:rmnd_products/Resources/Public/Icons/products_detail.svg',

@@ -21,6 +21,16 @@ defined('TYPO3') or die;
 
     ExtensionUtility::registerPlugin(
         'Products',
+        'SelectionList',
+        'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:selectionList',
+        'productsselectionlist',
+        'Products'
+    );
+
+    PluginUtility::addTcaType('products_selectionlist', PluginType::SELECTION_LIST, 'tx_products_domain_model_product');
+
+    ExtensionUtility::registerPlugin(
+        'Products',
         'Detail',
         'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:detail',
         'productsdetail',

@@ -34,6 +34,20 @@ class ProductController extends ActionController
         return $this->jsonResponse(json_encode($jsonResult));
     }
 
+    public function selectionListAction(?int $page = 1): ResponseInterface
+    {
+        $selectionResult = $this->dataService->getSelectionList($this->productRepository, $page);
+
+        $jsonResult = $this->jsonService->serializeList(
+            $selectionResult,
+            $page,
+            'detail',
+            'product'
+        );
+
+        return $this->jsonResponse(json_encode($jsonResult));
+    }
+
     public function detailAction(?Product $product = null): ResponseInterface
     {
         /** @var Product|null $product */
