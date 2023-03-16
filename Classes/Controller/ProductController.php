@@ -6,7 +6,7 @@ namespace Remind\Products\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Remind\Extbase\Service\DataService;
-use Remind\Headless\Service\JsonService;
+use Remind\Extbase\Service\JsonService;
 use Remind\Products\Domain\Model\Product;
 use Remind\Products\Domain\Repository\ProductRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
