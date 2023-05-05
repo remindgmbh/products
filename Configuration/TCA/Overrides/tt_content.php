@@ -9,7 +9,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 defined('TYPO3') or die;
 
 (function () {
-    ExtensionUtility::registerPlugin(
+    $filterableListSignature = ExtensionUtility::registerPlugin(
         'Products',
         'FilterableList',
         'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:filterableList',
@@ -17,9 +17,9 @@ defined('TYPO3') or die;
         'Products'
     );
 
-    PluginUtility::addTcaType('products_filterablelist', PluginType::FILTERABLE_LIST, 'tx_products_domain_model_product');
+    PluginUtility::addTcaType($filterableListSignature, PluginType::FILTERABLE_LIST, 'tx_products_domain_model_product');
 
-    ExtensionUtility::registerPlugin(
+    $selectionListSignature = ExtensionUtility::registerPlugin(
         'Products',
         'SelectionList',
         'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:selectionList',
@@ -27,9 +27,9 @@ defined('TYPO3') or die;
         'Products'
     );
 
-    PluginUtility::addTcaType('products_selectionlist', PluginType::SELECTION_LIST, 'tx_products_domain_model_product');
+    PluginUtility::addTcaType($selectionListSignature, PluginType::SELECTION_LIST, 'tx_products_domain_model_product');
 
-    ExtensionUtility::registerPlugin(
+    $detailSignature = ExtensionUtility::registerPlugin(
         'Products',
         'Detail',
         'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:detail',
@@ -37,5 +37,5 @@ defined('TYPO3') or die;
         'Products'
     );
 
-    PluginUtility::addTcaType('products_detail', PluginType::DETAIL, 'tx_products_domain_model_product');
+    PluginUtility::addTcaType($detailSignature, PluginType::DETAIL, 'tx_products_domain_model_product');
 })();
