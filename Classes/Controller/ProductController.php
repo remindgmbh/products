@@ -50,11 +50,10 @@ class ProductController extends ActionController
 
     public function detailAction(?Product $product = null): ResponseInterface
     {
-        /** @var Product|null $product */
-        $product = $this->dataService->getDetailEntity(
+        $detailResult = $this->dataService->getDetailResult(
             $this->productRepository,
             $product
         );
-        return $this->jsonResponse(json_encode(['product' => $product?->jsonSerialize()]));
+        return $this->jsonResponse(json_encode($detailResult));
     }
 }
