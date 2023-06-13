@@ -53,9 +53,7 @@ class ProductController extends ActionController
         /** @var Product|null $product */
         $product = $this->dataService->getDetailEntity(
             $this->productRepository,
-            $product,
-            function () {
-            }
+            $product
         );
         return $this->jsonResponse(json_encode(['product' => $product?->jsonSerialize()]));
     }
