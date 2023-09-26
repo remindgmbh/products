@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Remind\Products\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use Remind\Extbase\Service\DataService;
+use Remind\Extbase\Service\ControllerService;
 use Remind\Extbase\Service\JsonService;
 use Remind\Products\Domain\Model\Product;
 use Remind\Products\Domain\Repository\ProductRepository;
@@ -15,14 +15,14 @@ class ProductController extends ActionController
 {
     public function __construct(
         private readonly ProductRepository $productRepository,
-        private readonly DataService $dataService,
+        private readonly ControllerService $controllerService,
         private readonly JsonService $jsonService,
     ) {
     }
 
     public function filterableListAction(?int $page = 1, array $filter = []): ResponseInterface
     {
-        $listResult = $this->dataService->getFilterableList($this->productRepository, $page, $filter, 'filter');
+        $listResult = $this->controllerService->getFilterableList($this->productRepository, $page, $filter, 'filter');
 
         $jsonResult = $this->jsonService->serializeFilterableList(
             $listResult,
@@ -36,7 +36,7 @@ class ProductController extends ActionController
 
     public function selectionListAction(?int $page = 1): ResponseInterface
     {
-        $selectionResult = $this->dataService->getSelectionList($this->productRepository, $page);
+        $selectionResult = $this->controllerService->getSelectionList($this->productRepository, $page);
 
         $jsonResult = $this->jsonService->serializeList(
             $selectionResult,
@@ -50,7 +50,7 @@ class ProductController extends ActionController
 
     public function detailAction(?Product $product = null): ResponseInterface
     {
-        $detailResult = $this->dataService->getDetailResult(
+        $detailResult = $this->controllerService->getDetailResult(
             $this->productRepository,
             $product
         );
