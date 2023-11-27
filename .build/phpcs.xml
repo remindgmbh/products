@@ -5,8 +5,10 @@
         <type>error</type>
     </rule>
     <rule ref="PSR12">
+        <type>error</type>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
         <type>warning</type>
-        <exclude name="Generic.Files.LineLength" />
     </rule>
     <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace">
         <type>error</type>
