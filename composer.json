@@ -43,8 +43,8 @@
         }
     },
     "require": {
-        "remind/extbase": "dev-develop",
-        "remind/headless": "dev-develop",
+        "remind/extbase": "^1.1 | dev-develop",
+        "remind/headless": "^3.2 | dev-develop",
         "php": "^8.2",
         "typo3/cms-core": "^12.4"
     },
@@ -68,7 +68,7 @@
         }
     },
     "scripts": {
-        "phpcs": "@php ./.build/vendor/squizlabs/php_codesniffer/bin/phpcs --standard=.build/phpcs.xml --extensions=php --ignore=.build --report=full -n .",
-        "phpcbf": "@php ./.build/vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=.build/phpcs.xml --extensions=php --ignore=.build ."
+        "phpcs": "@php ./.build/bin/phpcs --standard=.build/phpcs.xml --extensions=php --ignore=.build --report=full -n .",
+        "phpcbf": "@php ./.build/bin/phpcbf --standard=.build/phpcs.xml --extensions=php --ignore=.build ."
     }
 }
