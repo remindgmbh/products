@@ -1,59 +1,50 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-    'ctrl' => [
-        'title' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
-        'label' => 'name',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'versioningWS' => true,
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-        'origUid' => 't3_origuid',
-        'delete' => 'deleted',
-        'sortby' => 'sorting',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
-        'iconfile' => 'EXT:rmnd_products/Resources/Public/Icons/tx_products_domain_model_product.svg',
-    ],
     'columns' => [
         'article_number' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => false,
+                'size' => 20,
+                'type' => 'input',
+            ],
             'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:articleNumber',
-            'config' => [
-                'type' => 'input',
-                'size' => 20,
-                'eval' => 'trim',
-                'required' => false,
-                'max' => 256,
-            ],
-        ],
-        'name' => [
-            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:name',
-            'config' => [
-                'type' => 'input',
-                'size' => 20,
-                'eval' => 'trim',
-                'required' => false,
-                'max' => 256,
-            ],
         ],
         'description' => [
-            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:description',
             'config' => [
-                'type' => 'text',
-                'eval' => 'trim',
                 'enableRichtext' => true,
+                'eval' => 'trim',
                 'required' => false,
+                'type' => 'text',
             ],
+            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:description',
+        ],
+        'images' => [
+            'config' => [
+                'allowed' => 'common-image-types',
+                'type' => 'file',
+            ],
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.images',
+        ],
+        'name' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => false,
+                'size' => 20,
+                'type' => 'input',
+            ],
+            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:name',
         ],
         'slug' => [
-            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:slug',
-            'exclude' => 0,
             'config' => [
-                'type' => 'slug',
+                'default' => '',
+                'eval' => 'uniqueInSite',
+                'fallbackCharacter' => '-',
                 'generatorOptions' => [
                     'fields' => ['name'],
                     'prefixParentPageSlug' => false,
@@ -61,77 +52,29 @@ return [
                         '/' => '-',
                     ],
                 ],
-                'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
-                'default' => '',
+                'type' => 'slug',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:slug',
         ],
-        'images' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.images',
-            'config' => [
-                'type' => 'file',
-                'allowed' => 'common-image-types',
-            ],
+    ],
+    'ctrl' => [
+        'crdate' => 'crdate',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
         ],
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        '',
-                        0,
-                    ],
-                ],
-                'foreign_table' => 'tx_products_domain_model_product',
-                'foreign_table_where' =>
-                    'AND {#tx_products_domain_model_product}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_products_domain_model_product}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0,
-            ],
-        ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-                'default' => '',
-            ],
-        ],
-        't3ver_label' => [
-            'displayCond' => 'FIELD:t3ver_label:REQ:true',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'none',
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
+        'iconfile' => 'EXT:rmnd_products/Resources/Public/Icons/tx_products_domain_model_product.svg',
+        'label' => 'name',
+        'languageField' => 'sys_language_uid',
+        'origUid' => 't3_origuid',
+        'sortby' => 'sorting',
+        'title' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
+        'translationSource' => 'l10n_source',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'transOrigPointerField' => 'l10n_parent',
+        'tstamp' => 'tstamp',
+        'versioningWS' => true,
     ],
     'palettes' => [
         'general' => [

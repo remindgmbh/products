@@ -17,19 +17,19 @@ class ExtensionUtility
         $fieldName = 'product';
         ExtensionManagementUtility::addTCAcolumns($table, [
             $fieldName => [
-                'exclude' => false,
-                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
                 'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectSingle',
-                    'foreign_table' => 'tx_products_domain_model_product',
                     'default' => 0,
-                    'minitems' => 0,
-                    'maxitems' => 1,
+                    'foreign_table' => 'tx_products_domain_model_product',
                     'items' => [
                         ['', 0],
                     ],
+                    'maxitems' => 1,
+                    'minitems' => 0,
+                    'renderType' => 'selectSingle',
+                    'type' => 'select',
                 ],
+                'exclude' => false,
+                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:product',
             ],
         ]);
         return $fieldName;
@@ -46,16 +46,16 @@ class ExtensionUtility
         $fieldName = 'products';
         $column = [
             $fieldName => [
-                'exclude' => false,
-                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:products',
                 'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectMultipleSideBySide',
                     'foreign_table' => 'tx_products_domain_model_product',
                     'MM' => $mm,
-                    'size' => 5,
                     'multiple' => 0,
+                    'renderType' => 'selectMultipleSideBySide',
+                    'size' => 5,
+                    'type' => 'select',
                 ],
+                'exclude' => false,
+                'label' => 'LLL:EXT:rmnd_products/Resources/Private/Language/locallang_tca.xlf:products',
             ],
         ];
 

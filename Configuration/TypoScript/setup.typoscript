@@ -1,13 +1,3 @@
-plugin {
-    tx_products {
-        settings {
-            jsonFields {
-                Remind\Products\Domain\Model\Product = articleNumber,name,description
-            }
-        }
-    }
-}
-
 tt_content {
     products_filterablelist =< lib.contentElementWithHeader
     products_filterablelist {

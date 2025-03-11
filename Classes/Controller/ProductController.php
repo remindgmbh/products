@@ -5,55 +5,55 @@ declare(strict_types=1);
 namespace Remind\Products\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use Remind\Extbase\Service\ControllerService;
-use Remind\Extbase\Service\JsonService;
+use Remind\Extbase\Controller\AbstractExtbaseController;
 use Remind\Products\Domain\Model\Product;
 use Remind\Products\Domain\Repository\ProductRepository;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class ProductController extends ActionController
+class ProductController extends AbstractExtbaseController
 {
     public function __construct(
-        private readonly ProductRepository $productRepository,
-        private readonly ControllerService $controllerService,
-        private readonly JsonService $jsonService,
+        ProductRepository $productRepository,
     ) {
+        parent::__construct($productRepository);
     }
 
-    public function filterableListAction(?int $page = 1, array $filter = []): ResponseInterface
+    /**
+     * @param mixed[] $filter
+     */
+    public function filterableListAction(int $page = 1, array $filter = []): ResponseInterface
     {
-        $listResult = $this->controllerService->getFilterableList($this->productRepository, $page, $filter, 'filter');
+        $listResult = $this->getFilterableList($page, $filter, 'filter');
 
-        $jsonResult = $this->jsonService->serializeFilterableList(
+        $jsonResult = $this->serializeFilterableList(
             $listResult,
             $page,
             'detail',
             'product',
         );
 
-        return $this->jsonResponse(json_encode($jsonResult));
+        return $this->jsonResponse(json_encode($jsonResult) ?: null);
     }
 
-    public function selectionListAction(?int $page = 1): ResponseInterface
+    public function selectionListAction(int $page = 1): ResponseInterface
     {
-        $selectionResult = $this->controllerService->getSelectionList($this->productRepository, $page);
+        $selectionResult = $this->getSelectionList($page);
 
-        $jsonResult = $this->jsonService->serializeList(
+        $jsonResult = $this->serializeList(
             $selectionResult,
             $page,
             'detail',
             'product'
         );
 
-        return $this->jsonResponse(json_encode($jsonResult));
+        return $this->jsonResponse(json_encode($jsonResult) ?: null);
     }
 
     public function detailAction(?Product $product = null): ResponseInterface
     {
-        $detailResult = $this->controllerService->getDetailResult(
-            $this->productRepository,
-            $product
-        );
-        return $this->jsonResponse(json_encode($detailResult));
+        $detailResult = $this->getDetailResult($product);
+
+        $jsonResult = $detailResult ? $this->serializeDetailResult($detailResult) : [];
+
+        return $this->jsonResponse(json_encode($jsonResult) ?: null);
     }
 }

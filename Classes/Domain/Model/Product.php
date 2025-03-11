@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace Remind\Products\Domain\Model;
 
-use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Product extends AbstractJsonSerializableEntity
+class Product extends AbstractEntity
 {
     protected string $articleNumber = '';
+
     protected string $name = '';
+
     protected string $description = '';
+
     protected string $slug = '';
+
     /**
      * @var ObjectStorage<FileReference> $images
      */
@@ -67,12 +71,12 @@ class Product extends AbstractJsonSerializableEntity
         return $this;
     }
 
-    public function addImage(FileReference $image)
+    public function addImage(FileReference $image): void
     {
         $this->images->attach($image);
     }
 
-    public function removeImage(FileReference $image)
+    public function removeImage(FileReference $image): void
     {
         $this->images->detach($image);
     }

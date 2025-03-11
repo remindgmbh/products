@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Remind\Products\Traits;
 
-use Remind\Products\Traits\ProductAwareInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 interface MultiProductAwareInterface extends ProductAwareInterface
