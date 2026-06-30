@@ -22,6 +22,11 @@ final readonly class SerializeEntityEventListener
         $this->filesService = GeneralUtility::makeInstance(FilesService::class);
     }
 
+    protected function camelize(string $input, string $separator = '_'): string
+    {
+        return lcfirst(str_replace($separator, '', ucwords($input, $separator)));
+    }
+
     public function __invoke(SerializeEntityEvent $event): void
     {
         $abstractEntity = $event->getAbstractEntity();
@@ -64,10 +69,5 @@ final readonly class SerializeEntityEventListener
 
             $event->setJson($json);
         }
-    }
-
-    protected function camelize(string $input, string $separator = '_'): string
-    {
-        return lcfirst(str_replace($separator, '', ucwords($input, $separator)));
     }
 }
