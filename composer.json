@@ -42,8 +42,8 @@
         }
     },
     "require": {
-        "remind/extbase": "^1.1 | dev-develop | 13.x-dev",
-        "remind/headless": "^3.2 | dev-develop | 13.x-dev",
+        "remind/extbase": "^3.1 | dev-develop",
+        "remind/headless": "^5.0 | dev-develop",
         "php": "^8",
         "typo3/cms-core": "^13.4"
     },
