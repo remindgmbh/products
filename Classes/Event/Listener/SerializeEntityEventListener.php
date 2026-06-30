@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Remind\Products\Event\Listener;
 
-use Remind\Products\Domain\Model\Product;
 use Remind\Extbase\Event\SerializeEntityEvent;
+use Remind\Headless\Service\FilesService;
+use Remind\Products\Domain\Model\Product;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use Remind\Headless\Service\FilesService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[AsEventListener]
 final readonly class SerializeEntityEventListener
@@ -21,18 +21,18 @@ final readonly class SerializeEntityEventListener
     {
         $this->filesService = GeneralUtility::makeInstance(FilesService::class);
     }
+
     public function __invoke(SerializeEntityEvent $event): void
     {
         $abstractEntity = $event->getAbstractEntity();
-        $settings =  $event->getSettings();
-        $properties = explode(',', $this->camelize($settings['properties']));
+        $settings = $event->getSettings();
+        $properties = array_filter(explode(',', $this->camelize($settings['properties'])));
 
         if ($abstractEntity instanceof Product) {
             /** @var \TYPO3\CMS\Core\TypoScript\FrontendTypoScript $frontendTyposcript */
             $frontendTyposcript = $event->getRequest()->getAttribute('frontend.typoscript');
             $constants = $frontendTyposcript->getFlatSettings();
             $normalizedParams = $event->getRequest()->getAttribute('normalizedParams');
-
 
             $json = $event->getJson();
 
@@ -45,13 +45,15 @@ final readonly class SerializeEntityEventListener
                     $storageItems = [];
 
                     foreach ($value as $item) {
-                        $storageItems[] = [
-                            'uid' => $item->getUid(),
-                            'pid' => $item->getPid(),
-                            'name' => $item->getName(),
-                            'description' => $item->getDescription(),
-                        ];
-
+                        if ($item !== null) {
+                            /** @var mixed $item */
+                            $storageItems[] = [
+                                'description' => $item->getDescription(),
+                                'name' => $item->getName(),
+                                'pid' => $item->getPid(),
+                                'uid' => $item->getUid(),
+                            ];
+                        }
                     }
 
                     $value = $storageItems;
@@ -64,7 +66,7 @@ final readonly class SerializeEntityEventListener
         }
     }
 
-    protected function camelize($input, $separator = '_')
+    protected function camelize(string $input, string $separator = '_'): string
     {
         return lcfirst(str_replace($separator, '', ucwords($input, $separator)));
     }
